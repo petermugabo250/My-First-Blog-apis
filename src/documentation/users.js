@@ -1,0 +1,132 @@
+/**
+ * @swagger
+ * /api/klab/users/signup:
+ *   post:
+ *     summary: Create New Account.
+ *     tags: [users]
+ *     requestBody:
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               firstname:
+ *                 type: string
+ *               lastname:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               Password:
+ *                 type: string
+ *               Profile:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: User registered successfully.
+ *       500:
+ *         description: Registration failed.
+ * /api/klab/users/login:
+ *   post:
+ *     summary: Enter you cridential to Login.
+ *     tags: [users]
+ *     requestBody:
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               Password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: User Logged in successfully.
+ *       500:
+ *         description: Login  failed.
+ * 
+ * /api/klab/users/view:
+ *   get:
+ *     summary: Get a list of all registered users.
+ *     tags: [users]
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved a list of all users.
+ *       500:
+ *         description: Failed to retrieve user data.
+ * /api/klab/users/view/{id}:
+ *   get:
+ *     summary: Get a single user by their ID.
+  *     tags: [users]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The ID of the user to retrieve.
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved the user.
+ *       404:
+ *         description: User not found with the provided ID.
+ *       500:
+ *         description: Failed to retrieve user data.
+ * 
+ * /api/klab/users/delete/{id}:
+ *   delete:
+ *     summary: Delete a user by their ID.
+ *     tags: [users]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The ID of the user to delete.
+ *     responses:
+ *       200:
+ *         description: User information deleted successfully.
+ *       404:
+ *         description: User not found with the provided ID.
+ *       500:
+*         description: Failed to delete user data.
+ * 
+ * /api/klab/users/update/{id}:
+ *   put:
+ *     summary: Update a user's information by their ID.
+ *     tags: [users]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The ID of the user to update.
+ *     requestBody:
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               Fname:
+ *                 type: string
+ *               Lname:
+ *                 type: string
+ *               Email:
+ *                 type: string
+ *               Password:
+ *                 type: string
+ *               Profile:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: User information updated successfully.
+ *       404:
+ *         description: User not found with the provided ID.
+ *       500:
+*         description: Failed to update user data.
+
+ */

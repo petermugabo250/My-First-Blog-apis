@@ -1,0 +1,11 @@
+import express  from "express";
+import fileUpload from "../helper/multer";
+import { signup,login,updateUser,deleteUserById,GetUsers,userByid } from "../controller/userControllers";
+const usersRoutes = express.Router();
+usersRoutes.post("/signup",fileUpload.single("profile"),signup);
+usersRoutes.post("/login", fileUpload.single("profile"),login);
+usersRoutes.put("/update/:id", fileUpload.single("profile"), updateUser);
+usersRoutes.delete("/delete/:id", deleteUserById);
+usersRoutes.get("/view",GetUsers);
+usersRoutes.get("/view/:id", userByid);
+export default usersRoutes;
