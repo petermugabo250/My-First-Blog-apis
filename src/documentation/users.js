@@ -16,7 +16,7 @@
  *                 type: string
  *               email:
  *                 type: string
- *               Password:
+ *               password:
  *                 type: string
  *               profile:
  *                 type: string
