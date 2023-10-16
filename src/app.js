@@ -28,8 +28,9 @@ const options ={
   definition: {
     openapi : '3.0.0',
     info : {
-      title: ' Backend Documentation of My blog',
-      version: '1.0.0'
+      title: ' Backend Documentation of  Project:',
+      description:'My Blog',
+      version: '1.0.0',
     },
     servers:[
       {
@@ -59,9 +60,9 @@ app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 //Determination of routes
 
-app.use("/api/klab/blog",blogRoutes);
+app.use("/api/myblog/blog",blogRoutes);
 // app.use("/api/klab/user",userRoute);
-app.use("/api/klab/users",usersRoutes);
+app.use("/api/myblog/users",usersRoutes);
 
 
 

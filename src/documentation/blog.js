@@ -1,6 +1,6 @@
 /**
  * @swagger
- * /api/klab/blog/create:
+ * /api/myblog/blog/create:
  *   post:
  *     summary: Post New Blog.
  *     tags: [Blogs]
@@ -24,7 +24,7 @@
  *         description: Your post have been posted.
  *       500:
  *         description: Failed To Post.
- * /api/klab/blog/read:
+ * /api/myblog/blog/read:
  *   get:
  *     summary: Get a list of all posted blogs.
  *     tags: [Blogs]
@@ -33,7 +33,7 @@
  *         description: list of all users.
  *       500:
 *         description: Failed to retrieve user data.
- * /api/klab/blog/read/{id}:
+ * /api/myblog/blog/read/{id}:
  *   get:
  *     summary: Get a single blog by  ID.
   *     tags: [Blogs]
@@ -52,7 +52,7 @@
  *       500:
  *         description: Failed to retrieve Blog data.
  * 
- * /api/klab/blog/delete/{id}:
+ * /api/myblog/blog/delete/{id}:
  *   delete:
  *     summary: Delete a blog by their ID.
  *     tags: [Blogs]
@@ -71,7 +71,7 @@
  *       500:
 *         description: Failed to delete blog data.
  * 
- * /api/klab/blog/update/{id}:
+ * /api/myblog/blog/update/{id}:
  *   put:
  *     summary: Update a blog's information by their ID.
  *     tags: [Blogs]

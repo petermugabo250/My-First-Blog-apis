@@ -1,8 +1,8 @@
 /**
  * @swagger
- * /api/klab/users/signup:
+ * /api/myblog/users/signup:
  *   post:
- *     summary: Create New Account.
+ *     summary: Create  Account.
  *     tags: [users]
  *     requestBody:
  *       content:
@@ -26,9 +26,9 @@
  *         description: User registered successfully.
  *       500:
  *         description: Registration failed.
- * /api/klab/users/login:
+ * /api/myblog/users/login:
  *   post:
- *     summary: Enter you cridential to Login.
+ *     summary:  Login into The system.
  *     tags: [users]
  *     requestBody:
  *       content:
@@ -46,7 +46,7 @@
  *       500:
  *         description: Login  failed.
  * 
- * /api/klab/users/view:
+ * /api/myblog/users/view:
  *   get:
  *     summary: Get a list of all registered users.
  *     tags: [users]
@@ -55,7 +55,7 @@
  *         description: Successfully retrieved a list of all users.
  *       500:
  *         description: Failed to retrieve user data.
- * /api/klab/users/view/{id}:
+ * /api/myblog/users/view/{id}:
  *   get:
  *     summary: Get a single user by their ID.
   *     tags: [users]
@@ -74,7 +74,7 @@
  *       500:
  *         description: Failed to retrieve user data.
  * 
- * /api/klab/users/delete/{id}:
+ * /api/myblog/users/delete/{id}:
  *   delete:
  *     summary: Delete a user by their ID.
  *     tags: [users]
@@ -93,7 +93,7 @@
  *       500:
 *         description: Failed to delete user data.
  * 
- * /api/klab/users/update/{id}:
+ * /api/myblog/users/update/{id}:
  *   put:
  *     summary: Update a user's information by their ID.
  *     tags: [users]
