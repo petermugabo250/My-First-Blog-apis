@@ -21,8 +21,7 @@
  *               profile:
  *                 type: string
  *                 format: binary
- *                 role: 
- *                 type: string
+ *                 
  *     responses:
  *       200:
  *         description: User registered successfully.
@@ -112,17 +111,19 @@
  *           schema:
  *             type: object
  *             properties:
- *               Fname:
+ *               firstname:
  *                 type: string
- *               Lname:
+ *               lastname:
  *                 type: string
- *               Email:
+ *               email:
  *                 type: string
- *               Password:
+ *               password:
  *                 type: string
- *               Profile:
+ *               profile:
  *                 type: string
  *                 format: binary
+ *                role:
+ *                  type: string
  *     responses:
  *       200:
  *         description: User information updated successfully.
