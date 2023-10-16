@@ -6,14 +6,24 @@ Usercomment:{
   type:String,
   require:true,
 },
-commentedBy:{
-  type:ObjectId,
-  ref: usertable,
+userid:{
+  type: ObjectId,
+  ref:"usertable",
+
 },
-  commentDate:{
-    type: Date,
-    default:Date.now,
-  },
+Cdate:{
+  type:Date,
+  default: Date.now,
+},
+username:{
+  type:String,
+  ref:"usertable",
+},
+userprofile:{
+type:String,
+ref:"usertable",
+},
+
 });
 
 const blogschema = new mongoose.Schema({

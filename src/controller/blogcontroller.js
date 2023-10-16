@@ -51,14 +51,15 @@ export const createComment = async(req,res) =>{
   }
     const comment ={
       Usercomment,
-      CommentedBy: req.usertable_id,
-      Creator: req.usertable.lastname,
-      creatorprofile: req.usertable.profile,
+      userid: req.usertable_id,
+      username: req.usertable.lastname,
+      userprofile: req.usertable.profile,
     }
-    blog.comments.push(comment); await blod.save();
+     blog.comments.push(comment); await blog.save();
     return res.status(200).json({
       status:"200",
       message:"Comment added Succefully",
+      data: blog,
     })
   }
   catch (error){

@@ -1,7 +1,8 @@
 import Jwt  from "jsonwebtoken";
 import usertable from "../model/userModel";
-const Authorization = async (req,res,next) =>{
-    let token;
+
+const CommentAuth = async(req,res,next) =>{
+  let token;
     try{
 if(
     req.headers.authorization &&
@@ -10,7 +11,6 @@ if(
 {
     token = req.headers.authorization.split(" ")[1];
 }
-
 if(!token)
 {
    
@@ -20,9 +20,8 @@ if(!token)
     });  
 }
 const decoded = await Jwt.verify(token,process.env.JWT_SECRET);
-const logedUser = await usertable.findById(decoded.id);
-
-if(!logedUser)
+const User = await usertable.findById(decoded.id);
+if(!User)
 {
     return res.status(403).json({
       status: "403",
@@ -30,26 +29,27 @@ if(!logedUser)
     });  
 }
 
-if(logedUser.role !=="admin")
+if(User.role =="User")
 {
     return res.status(404).json({
       status: "404",
-      message:" Only Loged Here As Adimin operation",
+      message:" Only Loged Here As User operation",
     
     });  
 }
 else{
-    req.usertable = logedUser;
+    req.usertable =User;
     next();
 }
-    } 
-
-    catch(error) {
-    return res.status(500).json({
-      status: "500",
-      error: error.message,
-    });
-    }
 
 }
-export default Authorization;
+catch (error)
+{
+    return res.status(500).json({
+      status: "500",
+      message:"failed To Login",
+      error: error.message,
+    });
+}
+}
+export default CommentAuth;
