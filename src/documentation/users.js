@@ -16,12 +16,11 @@
  *                 type: string
  *               email:
  *                 type: string
- *               password:
+ *               Password:
  *                 type: string
- *               profile:
+ *               Profile:
  *                 type: string
  *                 format: binary
- *                 
  *     responses:
  *       200:
  *         description: User registered successfully.
@@ -39,7 +38,7 @@
  *             properties:
  *               email:
  *                 type: string
- *               Password:
+ *               password:
  *                 type: string
  *     responses:
  *       200:
@@ -122,8 +121,6 @@
  *               profile:
  *                 type: string
  *                 format: binary
- *                role:
- *                  type: string
  *     responses:
  *       200:
  *         description: User information updated successfully.

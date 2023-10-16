@@ -192,7 +192,7 @@ export const updateBlog = async (req, res) =>{
 
     let result;
     if(req.file) result = await uploadToCloud(req.file, res);
-await blogmode.findByIdAndUpdate(id, {
+const myblog = await blogmode.findByIdAndUpdate(id, {
       blogImage:  result?.secure_url || "https://res.cloudinary.com/da12yf0am/image/upload/v1696850499/pbxwlozt1po8vtbwyabc.jpg",
      blogTitle,
      blogContent,
@@ -201,6 +201,7 @@ await blogmode.findByIdAndUpdate(id, {
     return res.status(201).json({
     status:"201",
      message: "Your Data hove been updated",
+     data: myblog,
 
    });
  
