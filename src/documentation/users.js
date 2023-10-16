@@ -21,6 +21,8 @@
  *               profile:
  *                 type: string
  *                 format: binary
+ *                 role: 
+ *                 type: string
  *     responses:
  *       200:
  *         description: User registered successfully.
