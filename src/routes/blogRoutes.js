@@ -5,6 +5,7 @@ import {
      blogById, 
      deleteBlogById,
      updateBlog,
+     createComment,
     } from "../controller/blogcontroller";
 import fileUpload from "../helper/multer";
 import Authorization from "../middleware/Auntantication";
@@ -15,5 +16,7 @@ blogRoutes.get("/read", allBlogs);
 blogRoutes.get("/read/:id",Authorization, blogById);
 blogRoutes.delete("/delete/:id",deleteBlogById);
 blogRoutes.put("/update/:id",Authorization,fileUpload.single("blogImage"), updateBlog);
+blogRoutes.post("/comment/:id", createComment);
+
 
 export default blogRoutes;

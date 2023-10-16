@@ -1,22 +1,25 @@
+import usertable from "../model/userModel";
 import blogmode from "../model/blogmodel";
 import { uploadToCloud } from "../helper/cloud";
-import usertable from "../model/userModel";
+
 //import { async } from "q";
 
 //Creating Blog
 
 export const createBlog = async (req, res) =>{
   try {
-    const {bogImage, blogTitle, blogContent, blogComment} = req.body;
+    const {bogImage, blogTitle, blogContent} = req.body;
     let result;
     if(req.file) result = await uploadToCloud(req.file, res);
     const Blog = await blogmode.create({
     blogImage:  result?.secure_url || "https://res.cloudinary.com/dskrteajn/image/upload/v1675271488/hznovwf7ksuylz9qcd6d.jpg",
     blogTitle,
     blogContent,
-    blogComment,
     creator:req.usertable.lastname,
-    creatorprofile:usertable.profile,
+    creatorprofile:req.usertable.profile,
+    PostedOn: req.usertable.PostedOn,
+
+
   });
   return res.status(200).json({
     message: "Your Blog Has Saved",
@@ -30,6 +33,42 @@ export const createBlog = async (req, res) =>{
     });
   }
 };
+
+// create comment
+export const createComment = async(req,res) =>{
+  try{
+    const {id} = req.params;
+    const {Usercomment} = req.body;
+    const blog = await blogmode.findById(id);
+  if(!blog)
+  {
+    return res.status(404).json({
+      status:"404",
+      message:"Blog Not found",
+  
+
+    });
+  }
+    const comment ={
+      Usercomment,
+      CommentedBy: req.usertable_id,
+      Creator: req.usertable.lastname,
+      creatorprofile: req.usertable.profile,
+    }
+    blog.comments.push(comment); await blod.save();
+    return res.status(200).json({
+      status:"200",
+      message:"Comment added Succefully",
+    })
+  }
+  catch (error){
+    return res.status(201).json({
+      status:"201",
+      message:"Failed to comment",
+      error: error.message,
+    })
+  }
+}
 
 //getting all data
 
@@ -149,7 +188,6 @@ export const updateBlog = async (req, res) =>{
   if (!getId)
     return res.status(404).json({
       message: "Id not Found",
-      error: error.message,
     });
 
     let result;
@@ -160,8 +198,6 @@ await blogmode.findByIdAndUpdate(id, {
      blogContent,
      blogComment,
     })
-
-
     return res.status(201).json({
     status:"201",
      message: "Your Data hove been updated",
@@ -170,6 +206,7 @@ await blogmode.findByIdAndUpdate(id, {
  
 } catch (error) {
  return res.status(500).json({
+  status:"500",
    message: "Failded to Update",
    error: error.message
   })

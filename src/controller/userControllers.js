@@ -1,4 +1,4 @@
-import usertable from "../model/userModel"
+import usertable from "../model/userModel";
 import { uploadToCloud } from "../helper/cloud";
 import Jwt from "jsonwebtoken";
 import bcrypt, { genSalt, hash } from "bcrypt";
