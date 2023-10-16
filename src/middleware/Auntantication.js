@@ -34,7 +34,7 @@ if(logedUser.role !=="admin")
 {
     return res.status(404).json({
       status: "404",
-      message:" Only Loged Here can do this operation",
+      message:" Only Loged Here As Adimin operation",
     
     });  
 }
