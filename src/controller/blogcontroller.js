@@ -1,4 +1,4 @@
-import usertable from "../model/userModel";
+
 import blogmode from "../model/blogmodel";
 import { uploadToCloud } from "../helper/cloud";
 

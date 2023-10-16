@@ -18,7 +18,7 @@
  *                 type: string
  *               Password:
  *                 type: string
- *               Profile:
+ *               profile:
  *                 type: string
  *                 format: binary
  *     responses:
