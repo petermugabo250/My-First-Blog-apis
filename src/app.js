@@ -35,8 +35,10 @@ const options ={
     },
     servers:[
       {
-        // url: 'https://klabblogapi.onrender.com/'
-        url: 'http://localhost:5200/'
+        url: 'https://my-first-blog-apis.onrender.com/'
+        // url: 'http://localhost:5200/'
+
+    
       }
     ],
     security:[
