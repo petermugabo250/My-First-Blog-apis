@@ -89,7 +89,7 @@ export const allcomment = async (req, res) => {
 export const allBlogs = async (req, res) => {
   try {
     const gettaallinfo = await blogmode.find();
-    const results = await blogmode.find().maxTimeMS(20000);
+    await blogmode.find().maxTimeMS(20000);
     return res.status(200).json({
       statusbar: "You Made It",
       message: "All Blogs Are here:",
