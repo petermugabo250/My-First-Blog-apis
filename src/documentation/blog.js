@@ -14,8 +14,6 @@
  *                 type: string
  *               blogContent:
  *                 type: string
- *               blogComment:
- *                 type: string
  *               blogImage:
  *                 type: string
  *                 format: binary
@@ -39,11 +37,11 @@
   *     tags: [Blogs]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: Enter Id
  *         required: true
  *         schema:
  *           type: string
- *         description: The ID of the blog retrieved.
+ *         description: View a single .
  *     responses:
  *       200:
  *         description: Successfully retrieved the blog.
@@ -54,15 +52,15 @@
  * 
  * /api/myblog/blog/delete/{id}:
  *   delete:
- *     summary: Delete a blog by their ID.
+ *     summary: Delete a blog by it's ID.
  *     tags: [Blogs]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: Enter Id
  *         required: true
  *         schema:
  *           type: string
- *         description: The ID of the blog to delete.
+ *         description: Delete Blog Using It's ID.
  *     responses:
  *       200:
  *         description: blog information deleted successfully.
@@ -77,7 +75,7 @@
  *     tags: [Blogs]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: Enter Id
  *         required: true
  *         schema:
  *           type: string
@@ -104,5 +102,28 @@
  *         description: A blog not found with the provided ID.
  *       500:
 *         description: Failed to update blog data.
+/api/myblog/blog/comment/post/{id}:
+ *   post:
+ *     summary: User Comment.
+ *     tags: [Blogs]
+ *     parameters:
+ *       - in: path
+ *         name: Enter Id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               Usercomment:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Comment sent.
+ *       500:
+ *         description: Failed send comment.
 
  */

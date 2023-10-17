@@ -1,4 +1,4 @@
-import userModel from "../model/users";
+import userModel from "../model/StatusModel";
 import { uploadToCloud } from "../helper/cloud";
 
 //Registering User
@@ -9,8 +9,9 @@ export const userSignUp = async (req, res) =>{
         let userReg;
         if(req.file) userReg = await uploadToCloud(req.file, res);
         const userRegister = await userModel.create({
-            FullName,
-            Email,
+            fname,
+            lname,
+            email,
             Password,
             Profile: userReg?.secure_url,
         });

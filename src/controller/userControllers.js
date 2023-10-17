@@ -95,44 +95,7 @@ export const login = async (req, res) => {
   }
 };
 
-// // update user
-// export const updateUser = async(req, res) =>{
-//   const {id} = req.params;
-//   try{
-//     const {firstname,lastname,email,password,profile,role} = req.body;
-//     const getId = await usertable.findById(id);
-//     const salt = await bcrypt.genSalt(10);
-//     const hashedPass = await bcrypt.hash(password, salt);
-//     if(!getId)
-    
-//       return res.status(404).json({
-//         status:"404",
-//         message:"Id Not Found",
-//       });
-//       let result;
-//       if(req.result) result = await uploadToCloud(req.file, res);
-//       const data = await usertable.findByIdAndUpdate(id, {
-//       profile: result?.secure_url || "https://res.cloudinary.com/da12yf0am/image/upload/v1696850499/pbxwlozt1po8vtbwyabc.jpg",
-//       firstname,
-//       lastname,
-//       email,
-//       password: hashedPass,
-//       role,
-//       });
-//       return res.status(201).json({
-//         message: "User Updated Successful",
-//         data: data,
-//       });
-//   }
-//   catch (error){
-//     return res.status(500).json({
-//       status:"500",
-//       message:"Failed to update Use",
-//       error: error.message,
-//     })
-//   }
-// }
-
+// update user
 export const updateUser = async (req, res) =>{
     const { id } = req.params;
     try {
