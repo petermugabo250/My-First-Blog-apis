@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import usertable from "./userModel";
+import {commentSchema} from"../model/CommentModel";
 const blogschema = new mongoose.Schema({
   PostImage: {
     type: String,
@@ -30,12 +31,7 @@ const blogschema = new mongoose.Schema({
   type: Date,
   default:Date.now,
   },
-  comments:[
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'comments', 
-    },
-  ]
+  comments:[commentSchema],
 });
 
 const blogmode = mongoose.model("Blogs", blogschema);

@@ -1,12 +1,18 @@
 import mongoose from "mongoose";
 const {ObjectId} = mongoose.Schema;
-const commentSchema= new mongoose.Schema({
+export const commentSchema= new mongoose.Schema({
 Usercomment:{
   type:String,
   require:true,
 },
 user:{
   type: ObjectId,
+  ref:"users",
+  require:true,
+
+},
+username:{
+  type: String,
   ref:"users",
   require:true,
 
