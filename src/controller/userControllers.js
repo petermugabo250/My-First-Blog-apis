@@ -184,7 +184,7 @@ return res.status(201).json({
 //read all users
 export const GetUsers = async(req, res) =>{
   try{
-    const users = await usertable.find();
+    const users = await usertable.find().timeout(20000);
     return res.status(200).json({
       statusbar: "200",
       message: " All Users Are Below",
