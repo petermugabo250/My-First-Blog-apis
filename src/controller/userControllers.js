@@ -184,14 +184,25 @@ return res.status(201).json({
 //read all users
 export const GetUsers = async(req, res) =>{
   try{
-    const users = await usertable.find().timeout(20000);
-    return res.status(200).json({
-      statusbar: "200",
-      message: " All Users Are Below",
-      data: users,
-    })
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => {
+        reject(new Error("Database query timeout"));
+      }, 30000); // Set a 30-second timeout
+    });
+
+    const usersPromise = usertable.find();
+
+    const users = await Promise.race([usersPromise, timeoutPromise]);
+
+    if (users instanceof Array) {
+      return res.status(200).json({
+        status: "200",
+        message: "All Users Are Below",
+        data: users,
+      });
     
   }
+}
   catch (error){
     
     return res.status(500).json({
