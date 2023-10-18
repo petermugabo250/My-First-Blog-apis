@@ -64,7 +64,7 @@ export const createComment = async (req, res) => {
   }
 };
 
-// fetch comments
+// fetch comments using blog Id
 export const allcomment = async (req, res) => {
   const { id } = req.params;
   try {
