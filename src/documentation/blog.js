@@ -88,11 +88,9 @@
  *             properties:
  *               blogTitle:
  *                 type: string
- *               blogContent:
+ *               PostContent:
  *                 type: string
- *               blogComment:
- *                 type: string
- *               blogImage:
+ *               PostImage:
  *                 type: string
  *                 format: binary
  *     responses:

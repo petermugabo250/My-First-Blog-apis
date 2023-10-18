@@ -16,16 +16,14 @@ const blogRoutes = express.Router();
 blogRoutes.post(
   "/create",
   Authorization,
-  fileUpload.single("blogImage"),
+  fileUpload.single("PostImage"),
   createBlog
 );
 blogRoutes.get("/read", allBlogs);
 blogRoutes.get("/read/:id", Authorization, blogById);
 blogRoutes.delete("/delete/:id", deleteBlogById);
 blogRoutes.put(
-  "/update/:id",
-  Authorization,
-  fileUpload.single("blogImage"),
+  "/update/:id",Authorization,fileUpload.single("PostImage"),
   updateBlog
 );
 blogRoutes.post("/comment/post/:id", CommentAuth, createComment);

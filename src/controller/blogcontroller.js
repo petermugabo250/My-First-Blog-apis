@@ -5,7 +5,7 @@ import { uploadToCloud } from "../helper/cloud";
 
 export const createBlog = async (req, res) => {
   try {
-    const { PostImage, PostTitle, PostContent } = req.body;
+    const {PostImage, PostTitle, PostContent } = req.body;
     let result;
     if (req.file) result = await uploadToCloud(req.file, res);
     const Blog = await blogmode.create({
@@ -155,7 +155,7 @@ export const deleteBlogById = async (req, res) => {
 export const updateBlog = async (req, res) => {
   const { id } = req.params;
   try {
-    const { blogImage, blogTitle, blogContent, blogComment } = req.body;
+    const { PostImage, PostTitle, PostContent } = req.body;
     const getId = await blogmode.findById(id);
     if (!getId)
       return res.status(404).json({
@@ -165,12 +165,11 @@ export const updateBlog = async (req, res) => {
     let result;
     if (req.file) result = await uploadToCloud(req.file, res);
     const myblog = await blogmode.findByIdAndUpdate(id, {
-      blogImage:
+      PostImage:
         result?.secure_url ||
         "https://res.cloudinary.com/da12yf0am/image/upload/v1696850499/pbxwlozt1po8vtbwyabc.jpg",
-      blogTitle,
-      blogContent,
-      blogComment,
+      PostTitle,
+      PostContent,
     });
     return res.status(201).json({
       status: "201",

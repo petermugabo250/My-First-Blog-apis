@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import usertable from "./userModel";
 const blogschema = new mongoose.Schema({
-PostImage: {
+  PostImage: {
     type: String,
-    require: false,
+    require: true,
   },
   PostTitle: {
     type: String,
