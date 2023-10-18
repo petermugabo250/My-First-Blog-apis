@@ -61,7 +61,7 @@ BearerAuth:[],
 const swaggerSpec = swaggerJSDoc(options)
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
-//Determination of routes
+//Determination of routes for APIS
 
 app.use("/api/myblog/blog",blogRoutes);
 app.use("/api/klab/status",statusroute);
