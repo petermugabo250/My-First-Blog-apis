@@ -31,7 +31,7 @@ export const createBlog = async (req, res) => {
   }
 };
 
-// create comment
+// // create comment
 export const createComment = async (req, res) => {
   try {
     const { id } = req.params;
@@ -48,8 +48,12 @@ export const createComment = async (req, res) => {
       Usercomment,
       user: usertable._id,
       blogId: blog._id,
+      username:usertable.lastname,
 
     });
+    await blogmode.findByIdAndUpdate(
+      
+    )
     return res.status(200).json({
       status: "200",
       message: "Comment added Succefully",

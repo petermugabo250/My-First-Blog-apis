@@ -33,30 +33,29 @@
 *         description: Failed to retrieve user data.
  * /api/myblog/blog/read/{id}:
  *   get:
- *     summary: Get a single blog by  ID.
+ *     summary: Get a single Post by their ID.
   *     tags: [Blogs]
  *     parameters:
  *       - in: path
- *         name: Enter Id
+ *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: View a single .
+ *         description: The ID of the Post to retrieve.
  *     responses:
  *       200:
- *         description: Successfully retrieved the blog.
+ *         description: Successfully retrieved the user.
  *       404:
  *         description: User not found with the provided ID.
  *       500:
- *         description: Failed to retrieve Blog data.
- * 
+ *         description: Failed to retrieve user data.
  * /api/myblog/blog/delete/{id}:
  *   delete:
  *     summary: Delete a blog by it's ID.
  *     tags: [Blogs]
  *     parameters:
  *       - in: path
- *         name: Enter Id
+ *         name: id
  *         required: true
  *         schema:
  *           type: string
@@ -75,7 +74,7 @@
  *     tags: [Blogs]
  *     parameters:
  *       - in: path
- *         name: Enter Id
+ *         name: id
  *         required: true
  *         schema:
  *           type: string
@@ -106,7 +105,7 @@
  *     tags: [Blogs]
  *     parameters:
  *       - in: path
- *         name: Enter Id
+ *         name: id
  *         required: true
  *         schema:
  *           type: string

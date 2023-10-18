@@ -20,8 +20,8 @@ blogRoutes.post(
   createBlog
 );
 blogRoutes.get("/read", allBlogs);
-blogRoutes.get("/read/:id", Authorization, blogById);
-blogRoutes.delete("/delete/:id", deleteBlogById);
+blogRoutes.get("/read/:id",blogById);
+blogRoutes.delete("/delete/:id",Authorization, deleteBlogById);
 blogRoutes.put(
   "/update/:id",Authorization,fileUpload.single("PostImage"),
   updateBlog
