@@ -7,13 +7,32 @@ import bcrypt, { genSalt, hash } from "bcrypt";
 export const signup = async (req, res) => {
   try {
     const { firstname, lastname, email, password, profile } = req.body;
-    if(!email || !password){
-      return res.status(500).json({
-        status: "500",
-        message: "Validate your inputs, some fileds are missing ",
+    //Validation functions
+const validateEmail = (email) => {
+// Basic email format validation
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  return emailRegex.test(email);
+};
+    const validatePassword = (password) => {
+      // Password requirements: at least 8 characters, at least one uppercase letter, one lowercase letter, one number, and one special character
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      return passwordRegex.test(password);
+    };
+
+    if (!email || !validateEmail(email)) {
+      return res.status(400).json({
+        status: "400",
+        message: "Invalid email",
       });
     }
 
+    if(!password || !validatePassword(password))
+    {
+      return res.status(400).json({
+        status: "400",
+        message: "Password requirements: at least 8 characters, at least one uppercase letter, one lowercase letter, one number, and one special character, Example: Test@123",
+      });
+    }
     const userEmail = await usertable.findOne({
       email: req.body.email,
     });

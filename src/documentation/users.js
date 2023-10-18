@@ -26,6 +26,8 @@
  *         description: User registered successfully.
  *       500:
  *         description: Registration failed.
+ *       400:
+ *         description: Password and Email Validation Failed.
  * /api/myblog/users/login:
  *   post:
  *     summary:  Login into The system.

@@ -16,10 +16,6 @@ blogId:{
     ref:"blogmode",
     require:true,
 },
-blogTitle:{
-type:String,
-ref:"blogmode",
-},
 time:{
   type:Date,
   default: Date.now,
