@@ -86,7 +86,7 @@
  *           schema:
  *             type: object
  *             properties:
- *               blogTitle:
+ *               PostTitle:
  *                 type: string
  *               PostContent:
  *                 type: string
