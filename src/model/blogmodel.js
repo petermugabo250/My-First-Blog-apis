@@ -30,7 +30,12 @@ PostImage: {
   type: Date,
   default:Date.now,
   },
-  comments:[]
+  comments:[
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'comments', 
+    },
+  ]
 });
 
 const blogmode = mongoose.model("Blogs", blogschema);
