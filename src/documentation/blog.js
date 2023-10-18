@@ -10,11 +10,11 @@
  *           schema:
  *             type: object
  *             properties:
- *               blogTitle:
+ *               PostTitle:
  *                 type: string
- *               blogContent:
+ *               PostContent:
  *                 type: string
- *               blogImage:
+ *               PostImage:
  *                 type: string
  *                 format: binary
  *     responses:
