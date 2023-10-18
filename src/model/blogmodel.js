@@ -1,15 +1,15 @@
 import mongoose from "mongoose";
 import usertable from "./userModel";
 const blogschema = new mongoose.Schema({
-  blogImage: {
+PostImage: {
     type: String,
     require: false,
   },
-  blogTitle: {
+  PostTitle: {
     type: String,
     require: true,
   },
-  blogContent: {
+  PostContent: {
     type: String,
     require: true,
   },

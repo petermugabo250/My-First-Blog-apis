@@ -5,15 +5,15 @@ import { uploadToCloud } from "../helper/cloud";
 
 export const createBlog = async (req, res) => {
   try {
-    const { blogImage, blogTitle, blogContent } = req.body;
+    const { PostImage, PostTitle, PostContent } = req.body;
     let result;
     if (req.file) result = await uploadToCloud(req.file, res);
     const Blog = await blogmode.create({
-      blogImage:
+      PostImage:
         result?.secure_url ||
         "https://res.cloudinary.com/dskrteajn/image/upload/v1675271488/hznovwf7ksuylz9qcd6d.jpg",
-      blogTitle,
-      blogContent,
+        PostTitle,
+        PostContent,
       creator: req.usertable.lastname,
       creatorprofile: req.usertable.profile,
       PostedDate: req.usertable.PostedDate,
