@@ -122,5 +122,20 @@
  *         description: Comment sent.
  *       500:
  *         description: Failed send comment.
+ * /api/myblog/blog/comment/get/{id}:
+ *   get:
+ *     summary: Comments View.
+ *     tags: [Blogs]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Comment retreived view here.
+ *       500:
+ *         description: Failed to retrieve comment.
 
  */
