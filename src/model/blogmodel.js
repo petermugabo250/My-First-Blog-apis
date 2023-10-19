@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import usertable from "./userModel";
 import {commentSchema} from"../model/CommentModel";
 import { Schema } from "mongoose";
-const blogschema = new mongoose.Schema({
+const PostSchema = new mongoose.Schema({
   PostImage: {
     type: String,
     require: true,
@@ -34,6 +34,6 @@ const blogschema = new mongoose.Schema({
   }]
 });
 
-const blogmode = mongoose.model("Blogs", blogschema);
+const blogModel = mongoose.model("Blogs", PostSchema);
 
-export default blogmode;
+export default blogModel;

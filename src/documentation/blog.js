@@ -2,8 +2,8 @@
  * @swagger
  * /api/myblog/blog/create:
  *   post:
- *     summary: Post New Blog.
- *     tags: [Blogs]
+ *     summary: Post New Post.
+ *     tags: [Posts]
  *     requestBody:
  *       content:
  *         multipart/form-data:
@@ -24,8 +24,8 @@
  *         description: Failed To Post.
  * /api/myblog/blog/read:
  *   get:
- *     summary: Get a list of all posted blogs.
- *     tags: [Blogs]
+ *     summary: Get a list of all posted Posts.
+ *     tags: [Posts]
  *     responses:
  *       200:
  *         description: list of all users.
@@ -34,7 +34,7 @@
  * /api/myblog/blog/read/{id}:
  *   get:
  *     summary: Get a single Post by their ID.
-  *     tags: [Blogs]
+  *     tags: [Posts]
  *     parameters:
  *       - in: path
  *         name: id
@@ -51,34 +51,34 @@
  *         description: Failed to retrieve user data.
  * /api/myblog/blog/delete/{id}:
  *   delete:
- *     summary: Delete a blog by it's ID.
- *     tags: [Blogs]
+ *     summary: Delete a Post by it's ID.
+ *     tags: [Posts]
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: Delete Blog Using It's ID.
+ *         description: Delete Post Using It's ID.
  *     responses:
  *       200:
- *         description: blog information deleted successfully.
+ *         description: Post information deleted successfully.
  *       404:
  *         description: Any not found with the provided ID.
  *       500:
-*         description: Failed to delete blog data.
+*         description: Failed to delete Post data.
  * 
  * /api/myblog/blog/update/{id}:
  *   put:
- *     summary: Update a blog's information by their ID.
- *     tags: [Blogs]
+ *     summary: Update a Post's information by their ID.
+ *     tags: [Posts]
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: The ID of the blog to update.
+ *         description: The ID of the Post to update.
  *     requestBody:
  *       content:
  *         multipart/form-data:
@@ -94,15 +94,15 @@
  *                 format: binary
  *     responses:
  *       200:
- *         description: A blog information updated successfully.
+ *         description: A Post information updated successfully.
  *       404:
- *         description: A blog not found with the provided ID.
+ *         description: A Post not found with the provided ID.
  *       500:
-*         description: Failed to update blog data.
+*         description: Failed to update Post data.
 /api/myblog/blog/comment/post/{id}:
  *   post:
- *     summary: Send Comment To A single Blog.
- *     tags: [Blogs]
+ *     summary: Send Comment To A single Post.
+ *     tags: [Posts]
  *     parameters:
  *       - in: path
  *         name: id
@@ -125,7 +125,7 @@
  * /api/myblog/blog/comment/get/{id}:
  *   get:
  *     summary: Comments View By using Post Id.
- *     tags: [Blogs]
+ *     tags: [Posts]
  *     parameters:
  *       - in: path
  *         name: id

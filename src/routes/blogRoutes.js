@@ -1,29 +1,29 @@
 import express from "express";
 import {
-  createBlog,
-  allBlogs,
-  blogById,
-  deleteBlogById,
-  updateBlog,createComment,allcomment,
+  createPost,
+  getAllPosts,
+  getPostById,
+  deletePostById,
+  updatePost,createComment,allcomment,
   
 } from "../controller/blogcontroller";
 import fileUpload from "../helper/multer";
 import Authorization from "../middleware/Auntantication";
-import CommentAuth from "../middleware/commentauntantication";
+import commentAuth from "../middleware/commentAuntantication";
 const blogRoutes = express.Router();
 blogRoutes.post(
   "/create",
   Authorization,
   fileUpload.single("PostImage"),
-  createBlog
+  createPost
 );
-blogRoutes.get("/read", allBlogs);
-blogRoutes.get("/read/:id",blogById);
-blogRoutes.delete("/delete/:id",Authorization, deleteBlogById);
+blogRoutes.get("/read", getAllPosts);
+blogRoutes.get("/read/:id",getPostById);
+blogRoutes.delete("/delete/:id",Authorization, deletePostById);
 blogRoutes.put(
   "/update/:id",Authorization,fileUpload.single("PostImage"),
-  updateBlog
+  updatePost
 );
-blogRoutes.post("/comment/post/:id", CommentAuth, createComment);
-blogRoutes.get("/comment/get/:id", CommentAuth, allcomment);
+blogRoutes.post("/comment/post/:id", commentAuth, createComment);
+blogRoutes.get("/comment/get/:id", commentAuth, allcomment);
 export default blogRoutes;

@@ -18,7 +18,7 @@ username:{
   require:true,
 },
 
-userphoto:{
+userPhoto:{
   type:String,
   ref:"users",
   require:true,
@@ -35,5 +35,5 @@ time:{
   default: Date.now,
 },
 });
-const usercomments = mongoose.model("comments", commentSchema);
-export default usercomments;
+const Comments = mongoose.model("comments", commentSchema);
+export default Comments;

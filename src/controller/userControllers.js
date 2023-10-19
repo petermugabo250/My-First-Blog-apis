@@ -36,7 +36,6 @@ const validateEmail = (email) => {
     const userEmail = await usertable.findOne({
       email: req.body.email,
     });
-    console.log("nmmnnm", userEmail)
 
     if (userEmail) {
       return res.status(500).json({
@@ -206,7 +205,7 @@ export const GetUsers = async(req, res) =>{
   catch (error){
     
     return res.status(500).json({
-      statusbar: "Sorry Something Went Wrong",
+      statusbar: "500",
       message: "failed To Display Users",
       error: error.message,
 

@@ -1,7 +1,7 @@
 import Jwt  from "jsonwebtoken";
-import usertable from "../model/userModel";
+import userModel from "../model/userModel";
 
-const CommentAuth = async(req,res,next) =>{
+const commentAuth = async(req,res,next) =>{
   let token;
     try{
 if(
@@ -20,7 +20,7 @@ if(!token)
     });  
 }
 const decoded = await Jwt.verify(token,process.env.JWT_SECRET);
-const User = await usertable.findById(decoded.id);
+const User = await userModel.findById(decoded.id);
 if(!User)
 {
     return res.status(403).json({
@@ -31,7 +31,7 @@ if(!User)
 
 if(User)
 {
-    req.usertable =User;
+    req.authenticatedUser =User;
     next();
     }
 
@@ -45,4 +45,4 @@ catch (error)
     });
 }
 }
-export default CommentAuth;
+export default commentAuth;
