@@ -29,18 +29,11 @@ if(!User)
     });  
 }
 
-if(User.role =="User")
+if(User)
 {
-    return res.status(404).json({
-      status: "404",
-      message:" Only Loged Here As User operation",
-    
-    });  
-}
-else{
     req.usertable =User;
     next();
-}
+    }
 
 }
 catch (error)
