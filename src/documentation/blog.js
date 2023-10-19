@@ -101,7 +101,7 @@
 *         description: Failed to update blog data.
 /api/myblog/blog/comment/post/{id}:
  *   post:
- *     summary: User Comment.
+ *     summary: Send Comment To A single Blog.
  *     tags: [Blogs]
  *     parameters:
  *       - in: path
@@ -124,7 +124,7 @@
  *         description: Failed send comment.
  * /api/myblog/blog/comment/get/{id}:
  *   get:
- *     summary: Comments View.
+ *     summary: Comments View By using Post Id.
  *     tags: [Blogs]
  *     parameters:
  *       - in: path
