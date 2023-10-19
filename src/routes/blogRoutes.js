@@ -4,14 +4,12 @@ import {
   allBlogs,
   blogById,
   deleteBlogById,
-  updateBlog,
-  createComment,
-  allcomment,
+  updateBlog,createComment,allcomment,
+  
 } from "../controller/blogcontroller";
 import fileUpload from "../helper/multer";
 import Authorization from "../middleware/Auntantication";
 import CommentAuth from "../middleware/commentauntantication";
-
 const blogRoutes = express.Router();
 blogRoutes.post(
   "/create",

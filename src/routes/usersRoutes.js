@@ -6,7 +6,7 @@ const usersRoutes = express.Router();
 usersRoutes.post("/signup",fileUpload.single("profile"),signup);
 usersRoutes.post("/login", fileUpload.single("profile"),login);
 usersRoutes.put("/update/:id", fileUpload.single("profile"), updateUser);
-usersRoutes.delete("/delete/:id", deleteUserById);
+usersRoutes.delete("/delete/:id",Authorization,deleteUserById);
 usersRoutes.get("/view",Authorization,GetUsers);
 usersRoutes.get("/view/:id",Authorization, userByid);
 export default usersRoutes;

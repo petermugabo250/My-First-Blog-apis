@@ -15,10 +15,6 @@ const blogschema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  // blogComment: {
-  //   type: String,
-  //   require: true,
-  // },
 
   creator:{
     type: String,
@@ -32,7 +28,10 @@ const blogschema = new mongoose.Schema({
   type: Date,
   default:Date.now,
   },
-  comment:[commentSchema],
+  comment:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref:'comments',
+  }]
 });
 
 const blogmode = mongoose.model("Blogs", blogschema);

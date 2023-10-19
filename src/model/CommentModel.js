@@ -12,6 +12,18 @@ user:{
   require:true,
 
 },
+username:{
+  type:String,
+  ref:"users",
+  require:true,
+},
+
+userphoto:{
+  type:String,
+  ref:"users",
+  require:true,
+},
+
 PostId:{
     type:Schema.Types.ObjectId,
     ref:"blogmode",

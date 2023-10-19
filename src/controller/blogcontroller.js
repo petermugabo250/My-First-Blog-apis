@@ -36,30 +36,32 @@ export const createComment = async (req, res) => {
   try {
     const { id } = req.params;
     const { usertable } = req;
-    const { CommentMessage,blogId } = req.body;
-    const blog = await blogmode.findById(id);
-    if (!blog) {
+    const { CommentMessage} = req.body;
+    const post = await blogmode.findById(id);
+    if (!post) {
       return res.status(404).json({
         status: "404",
         message: "Blog Not found",
       });
     }
-    const comm = await usercomments.create({
+    const comments = await usercomments.create({
       CommentMessage,
       user: usertable._id,
-      PostId:blog._id,
+      PostId:post._id,
+      username: usertable.lastname,
+      userphoto:usertable.profile,
 
     });
 
     await blogmode.findByIdAndUpdate(
-      blogId,
-      {$push: {comm:usercomments._id}},
+      id,
+      {$push: {comment:comments._id}},
       {new:true}
     )
     return res.status(200).json({
       status: "200",
       message: "Comment added Succefully",
-      data: comm,
+      data: comments,
     });
   } catch (error) {
     return res.status(201).json({
@@ -94,31 +96,13 @@ export const allcomment = async (req, res) => {
 
 export const allBlogs = async (req, res) => {
   try {
-    const gettaallinfo = await blogmode.find();
+    const gettaallinfo = await blogmode.find().populate({path:'comment', select: 'CommentMessage user username userphoto'});
     return res.status(200).json({
       statusbar: "You Made It",
       message: "All Blogs Are here:",
       data: gettaallinfo,
     });
-// use agrgregate to retrieve Data
-    // const result = await blogmode.aggregate([
-    //   {
-    //     $lookup: {
-    //       from: 'usercomments',
-    //       localField: '_id',
-    //       foreignField: 'blogId',
-    //       as: 'comments',
-    //     },
-    //   },
-    // ]);
-    
-    // Send the result as a response to the client
-    res.status(200).json({
-      status: "200",
-      message: "Data retrieved successfully",
-      data: result,
-    });
-    return res.status(200).json(result);
+
   } catch (error) {
     return res.status(500).json({
       statusbar: "Sorry Something Went Wrong",
@@ -209,4 +193,3 @@ export const updateBlog = async (req, res) => {
     });
   }
 };
-
