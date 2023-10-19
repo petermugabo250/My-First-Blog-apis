@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
+import { Schema } from "mongoose";
 const {ObjectId} = mongoose.Schema;
 export const commentSchema= new mongoose.Schema({
-Usercomment:{
+CommentMessage:{
   type:String,
   require:true,
 },
@@ -11,17 +12,12 @@ user:{
   require:true,
 
 },
-username:{
-  type: String,
-  ref:"users",
-  require:true,
-
-},
-blogId:{
-    type:ObjectId,
+PostId:{
+    type:Schema.Types.ObjectId,
     ref:"blogmode",
     require:true,
 },
+
 time:{
   type:Date,
   default: Date.now,

@@ -35,8 +35,8 @@ const options ={
     },
     servers:[
       {
-        //url: 'https://my-first-blog-apis.onrender.com/'
-        url: 'http://localhost:5300/'
+        url: 'https://my-first-blog-apis.onrender.com/'
+        //url: 'http://localhost:5300/'
 
     
       }

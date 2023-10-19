@@ -36,7 +36,7 @@ export const createComment = async (req, res) => {
   try {
     const { id } = req.params;
     const { usertable } = req;
-    const { Usercomment } = req.body;
+    const { CommentMessage,blogId } = req.body;
     const blog = await blogmode.findById(id);
     if (!blog) {
       return res.status(404).json({
@@ -44,20 +44,22 @@ export const createComment = async (req, res) => {
         message: "Blog Not found",
       });
     }
-    const comments = await usercomments.create({
-      Usercomment,
+    const comm = await usercomments.create({
+      CommentMessage,
       user: usertable._id,
-      blogId: blog._id,
-      username:usertable.lastname,
+      PostId:blog._id,
 
     });
+
     await blogmode.findByIdAndUpdate(
-      
+      blogId,
+      {$push: {comm:usercomments._id}},
+      {new:true}
     )
     return res.status(200).json({
       status: "200",
       message: "Comment added Succefully",
-      data: comments,
+      data: comm,
     });
   } catch (error) {
     return res.status(201).json({
@@ -73,7 +75,7 @@ export const allcomment = async (req, res) => {
   const { id } = req.params;
   try {
     const gettallcomment = await usercomments
-      .find({blogId:id,}).populate("user","firstname lastname profile");
+      .find({PostId:id,}).populate("user","firstname lastname ");
     return res.status(200).json({
       status: "200",
       message: "All comments Are here:",
@@ -98,6 +100,25 @@ export const allBlogs = async (req, res) => {
       message: "All Blogs Are here:",
       data: gettaallinfo,
     });
+// use agrgregate to retrieve Data
+    // const result = await blogmode.aggregate([
+    //   {
+    //     $lookup: {
+    //       from: 'usercomments',
+    //       localField: '_id',
+    //       foreignField: 'blogId',
+    //       as: 'comments',
+    //     },
+    //   },
+    // ]);
+    
+    // Send the result as a response to the client
+    res.status(200).json({
+      status: "200",
+      message: "Data retrieved successfully",
+      data: result,
+    });
+    return res.status(200).json(result);
   } catch (error) {
     return res.status(500).json({
       statusbar: "Sorry Something Went Wrong",
