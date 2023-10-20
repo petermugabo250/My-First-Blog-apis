@@ -9,7 +9,7 @@ import {
 } from "../controller/postController";
 import fileUpload from "../helper/multer";
 import Authorization from "../middleware/Auntantication";
-import commentAuth from "../middleware/commentAuntantication";
+import commentAuth from "../middleware/commentAunt";
 const PostRoutes = express.Router();
 PostRoutes.post(
   "/create",
