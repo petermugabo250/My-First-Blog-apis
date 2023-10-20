@@ -35,5 +35,5 @@ time:{
   default: Date.now,
 },
 });
-const Comments = mongoose.model("comments", commentSchema);
-export default Comments;
+const CommentModel = mongoose.model("comments", commentSchema);
+export default CommentModel;

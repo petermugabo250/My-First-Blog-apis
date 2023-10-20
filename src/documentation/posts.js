@@ -1,6 +1,6 @@
 /**
  * @swagger
- * /api/myblog/blog/create:
+ * /api/posts/create:
  *   post:
  *     summary: Post New Post.
  *     tags: [Posts]
@@ -22,7 +22,7 @@
  *         description: Your post have been posted.
  *       500:
  *         description: Failed To Post.
- * /api/myblog/blog/read:
+ * /api/posts/read:
  *   get:
  *     summary: Get a list of all posted Posts.
  *     tags: [Posts]
@@ -31,7 +31,7 @@
  *         description: list of all users.
  *       500:
 *         description: Failed to retrieve user data.
- * /api/myblog/blog/read/{id}:
+ * /api/posts/read/{id}:
  *   get:
  *     summary: Get a single Post by their ID.
   *     tags: [Posts]
@@ -49,7 +49,7 @@
  *         description: User not found with the provided ID.
  *       500:
  *         description: Failed to retrieve user data.
- * /api/myblog/blog/delete/{id}:
+ * /api/posts/delete/{id}:
  *   delete:
  *     summary: Delete a Post by it's ID.
  *     tags: [Posts]
@@ -68,7 +68,7 @@
  *       500:
 *         description: Failed to delete Post data.
  * 
- * /api/myblog/blog/update/{id}:
+ * /api/posts/update/{id}:
  *   put:
  *     summary: Update a Post's information by their ID.
  *     tags: [Posts]
@@ -99,7 +99,7 @@
  *         description: A Post not found with the provided ID.
  *       500:
 *         description: Failed to update Post data.
-/api/myblog/blog/comment/post/{id}:
+  /api/posts/comment/post/{id}:
  *   post:
  *     summary: Send Comment To A single Post.
  *     tags: [Posts]
@@ -122,7 +122,7 @@
  *         description: Comment sent.
  *       500:
  *         description: Failed send comment.
- * /api/myblog/blog/comment/get/{id}:
+ * /api/posts/comment/get/{id}:
  *   get:
  *     summary: Comments View By using Post Id.
  *     tags: [Posts]
