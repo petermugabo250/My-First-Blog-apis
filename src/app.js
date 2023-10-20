@@ -8,7 +8,7 @@ import swaggerJSDoc from "swagger-jsdoc";
 
 //Import routes
 import statusroute from"../src/routes/StatusRoutes"
-import blogRoutes from "./routes/blogRoutes";
+import PostRoutes from "./routes/PostsRoutes";
 // import docrouter from "../documentation/swagger";
 
 // import userRoute from "./routes/userroutes";
@@ -63,9 +63,9 @@ app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 //Determination of routes for APIS
 
-app.use("/api/myblog/blog",blogRoutes);
+app.use("/api/posts",PostRoutes);
 app.use("/api/klab/status",statusroute);
-app.use("/api/myblog/users",usersRoutes);
+app.use("/api/users",usersRoutes);
 
 
 

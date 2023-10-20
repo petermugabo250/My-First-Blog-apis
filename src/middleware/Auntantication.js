@@ -39,7 +39,7 @@ if(logedUser.role !=="admin")
     });  
 }
 else{
-    req.usertable = logedUser;
+    req.authenticatedUser = logedUser;
     next();
 }
     } 

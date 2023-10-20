@@ -1,6 +1,6 @@
 /**
  * @swagger
- * /api/myblog/users/signup:
+ * /api/users/signup:
  *   post:
  *     summary: Create  Account.
  *     tags: [users]
@@ -28,7 +28,7 @@
  *         description: Registration failed.
  *       400:
  *         description: Password and Email Validation Failed.
- * /api/myblog/users/login:
+ * /api/users/login:
  *   post:
  *     summary:  Login into The system.
  *     tags: [users]
@@ -48,7 +48,7 @@
  *       500:
  *         description: Login  failed.
  * 
- * /api/myblog/users/view:
+ * /api/users/view:
  *   get:
  *     summary: Get a list of all registered users.
  *     tags: [users]
@@ -57,7 +57,7 @@
  *         description: Successfully retrieved a list of all users.
  *       500:
  *         description: Failed to retrieve user data.
- * /api/myblog/users/view/{id}:
+ * /api/users/view/{id}:
  *   get:
  *     summary: Get a single user by their ID.
   *     tags: [users]
@@ -76,7 +76,7 @@
  *       500:
  *         description: Failed to retrieve user data.
  * 
- * /api/myblog/users/delete/{id}:
+ * /api/users/delete/{id}:
  *   delete:
  *     summary: Delete a user by their ID.
  *     tags: [users]
@@ -95,7 +95,7 @@
  *       500:
 *         description: Failed to delete user data.
  * 
- * /api/myblog/users/update/{id}:
+ * /api/users/update/{id}:
  *   put:
  *     summary: Update a user's information by their ID.
  *     tags: [users]

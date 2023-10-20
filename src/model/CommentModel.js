@@ -12,6 +12,18 @@ user:{
   require:true,
 
 },
+username:{
+  type:String,
+  ref:"users",
+  require:true,
+},
+
+userPhoto:{
+  type:String,
+  ref:"users",
+  require:true,
+},
+
 PostId:{
     type:Schema.Types.ObjectId,
     ref:"blogmode",
@@ -23,5 +35,5 @@ time:{
   default: Date.now,
 },
 });
-const usercomments = mongoose.model("comments", commentSchema);
-export default usercomments;
+const CommentModel = mongoose.model("comments", commentSchema);
+export default CommentModel;
