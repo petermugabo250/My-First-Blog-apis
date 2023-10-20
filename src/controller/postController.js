@@ -99,11 +99,11 @@ export const allcomment = async (req, res) => {
 
 export const getAllPosts = async (req, res) => {
   try {
-    const gettaallinfo = await postModel.find().populate({path:'comment', select: 'CommentMessage user username userphoto'});
+    const getPosts = await postModel.find().populate({path:'comment', select: 'CommentMessage user username userphoto'});
     return res.status(200).json({
       status: "200",
-      message: "All Posts Are here:",
-      data: gettaallinfo,
+      message: "All posts are here:",
+      data: getPosts,
     });
 
   } catch (error) {
