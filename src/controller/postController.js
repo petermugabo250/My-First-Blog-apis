@@ -11,8 +11,7 @@ export const createPost = async (req, res) => {
     if (req.file) result = await uploadToCloud(req.file, res);
     const Post = await postModel.create({
       PostImage:
-      result?.secure_url ||
-        "https://res.cloudinary.com/dvl09mzee/image/upload/v1697657307/yvvbyjuf0nnakpsh25il.jpg",
+      result?.secure_url,
         PostTitle,
         PostContent,
       creator: req.authenticatedUser.lastname,
