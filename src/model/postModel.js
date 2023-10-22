@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import usertable from "./userModel";
+import CommentModel from "./CommentModel";
 import {commentSchema} from"./CommentModel";
 import { Schema } from "mongoose";
 const PostSchema = new mongoose.Schema({
@@ -28,7 +29,7 @@ const PostSchema = new mongoose.Schema({
   type: Date,
   default:Date.now,
   },
-  comment:[{
+  comments:[{
     type: mongoose.Schema.Types.ObjectId,
     ref:'comments',
   }]

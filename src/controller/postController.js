@@ -49,7 +49,7 @@ export const createComment = async (req, res) => {
     }
     const comments = await CommentModel.create({
       CommentMessage,
-      user: authenticatedUser,
+      user: authenticatedUser.id,
       username:req.authenticatedUser.lastname,
       userPhoto:req.authenticatedUser.profile,
       PostId:post._id,
@@ -99,10 +99,10 @@ export const allcomment = async (req, res) => {
 
 export const getAllPosts = async (req, res) => {
   try {
-    const getPosts = await postModel.find().populate({path:'comment', select: 'CommentMessage user username userphoto'});
+    const getPosts = await postModel.find().populate({path:'comments', select: 'CommentMessage user'});
     return res.status(200).json({
       status: "200",
-      message: "All posts are here:",
+      message: "All posts re here:",
       data: getPosts,
     });
 
@@ -120,21 +120,21 @@ export const getAllPosts = async (req, res) => {
 export const getPostById = async (req, res) => {
   try {
     const { id } = req.params;
-    const PostContentid = await blogmode.findById(id);
+    const Postid = await postModel.findById(id);
     if (!Postid) {
       return res.status(404).json({
         message: "Post Id Not Found",
       });
     }
     return res.status(200).json({
-      statusbar: "Post id Found",
+      status: "200",
       message: "Congratrations",
       data: Postid,
     });
   } catch (error) {
     return res.status(404).json({
-      statusbar: "404",
-      message: "Id not found ",
+      status: "404",
+      message: "Id not found Please try again ",
       error: error.message,
     });
   }
