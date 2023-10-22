@@ -135,7 +135,7 @@ export const updateUser = async (req, res) => {
     const user = await userModel.findByIdAndUpdate(id, {
       profile:
         result?.secure_url ||
-        "https://res.cloudinary.com/dxitrjcef/image/upload/v1696870762/kazdcipwzwu0ycprzlg6.jpg",
+        "https://res.cloudinary.com/dvl09mzee/image/upload/v1697997462/dhocfnhmhn2vi5tcicvl.png",
       lastname,
       email,
       password: hashedPass,
