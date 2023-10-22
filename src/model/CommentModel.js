@@ -26,7 +26,7 @@ userPhoto:{
 
 PostId:{
     type:Schema.Types.ObjectId,
-    ref:"blogmode",
+    ref:"postModel",
     require:true,
 },
 

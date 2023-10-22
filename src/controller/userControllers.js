@@ -218,7 +218,7 @@ export const userByid = async (req, res) => {
     if (!userid) {
       return res.status(404).json({
         status: "404",
-        message: "Blog id not Found",
+        message: "User id not Found",
       });
     }
     return res.status(200).json({
