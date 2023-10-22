@@ -6,13 +6,13 @@ import userModel from "../model/userModel";
 
 export const createPost = async (req, res) => {
   try {
-    const {PostImage, PostTitle, PostContent} = req.body;
+    const {PostTitle, PostContent,PostImage} = req.body;
     let result;
     if (req.file) result = await uploadToCloud(req.file, res);
     const Post = await postModel.create({
       PostImage:
-        result?.secure_url ||
-        "https://res.cloudinary.com/dskrteajn/image/upload/v1675271488/hznovwf7ksuylz9qcd6d.jpg",
+      result?.secure_url ||
+        "https://res.cloudinary.com/dvl09mzee/image/upload/v1697657307/yvvbyjuf0nnakpsh25il.jpg",
         PostTitle,
         PostContent,
       creator: req.authenticatedUser.lastname,
