@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { Schema } from "mongoose";
 const {ObjectId} = mongoose.Schema;
 export const commentSchema= new mongoose.Schema({
-CommentMessage:{
+  commentMessage:{
   type:String,
   require:true,
 },

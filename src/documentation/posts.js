@@ -99,10 +99,10 @@
  *         description: A Post not found with the provided ID.
  *       500:
 *         description: Failed to update Post data.
-  /api/posts/comment/post/{id}:
+  /api/posts/comment/send/{id}:
  *   post:
  *     summary: Send Comment To A single Post.
- *     tags: [Posts]
+ *     tags: [Comments]
  *     parameters:
  *       - in: path
  *         name: id
@@ -115,7 +115,7 @@
  *           schema:
  *             type: object
  *             properties:
- *               Usercomment:
+ *               commentMessage:
  *                 type: string
  *     responses:
  *       200:
@@ -125,7 +125,7 @@
  * /api/posts/comment/get/{id}:
  *   get:
  *     summary: Comments View By using Post Id.
- *     tags: [Posts]
+ *     tags: [Comments]
  *     parameters:
  *       - in: path
  *         name: id
@@ -137,5 +137,43 @@
  *         description: Comment retreived view here.
  *       500:
  *         description: Failed to retrieve comment.
+ * /api/posts/comment/update/{id}:
+ *   put:
+ *     summary: Update your  comment.
+ *     tags: [Comments]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               commentMessage:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: comment updated.
+ *       500:
+ *         description: failed to update comment.
+ * /api/posts/comment/delete/{id}:
+ *   delete:
+ *     summary: Delete comments.
+ *     tags: [Comments]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Comment deleted.
+ *       500:
+ *         description: Failed to delete comment.
 
  */
