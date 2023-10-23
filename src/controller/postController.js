@@ -11,7 +11,7 @@ export const createPost = async (req, res) => {
     if (req.file) result = await uploadToCloud(req.file, res);
     const Post = await postModel.create({
       PostImage:
-      result?.secure_url,
+      result?.secure_url || "https://res.cloudinary.com/dvl09mzee/image/upload/v1697657307/yvvbyjuf0nnakpsh25il.jpg",
         PostTitle,
         PostContent,
       creator: req.authenticatedUser.lastname,
@@ -37,7 +37,7 @@ export const createComment = async (req, res) => {
   try {
     const { id } = req.params;
     const { authenticatedUser } = req;
-    const { CommentMessage} = req.body;
+    const { commentMessage} = req.body;
     const post = await postModel.findById(id);
     if (!post) {
       return res.status(404).json({
@@ -46,8 +46,8 @@ export const createComment = async (req, res) => {
         data:{}
       });
     }
-    const comments = await CommentModel.create({
-      CommentMessage,
+    const newComment = await CommentModel.create({
+      commentMessage,
       user: authenticatedUser.id,
       username:req.authenticatedUser.lastname,
       userPhoto:req.authenticatedUser.profile,
@@ -55,15 +55,15 @@ export const createComment = async (req, res) => {
 
     });
 
-    await postModel.findByIdAndUpdate(
+    const updatePost = await postModel.findByIdAndUpdate(
       id,
-      {$push: {comment:CommentModel._id}},
+      {$push: {comment:newComment._id}},
       {new:true}
     )
     return res.status(200).json({
       status: "200",
       message: "Comment added Succefully",
-      data: comments,
+      comment: newComment,
     });
   } catch (error) {
     return res.status(500).json({
@@ -79,7 +79,7 @@ export const allcomment = async (req, res) => {
   const { id } = req.params;
   try {
     const gettAllcomment = await CommentModel
-      .find({PostId:id,}).populate("user","firstname lastname ");
+      .find({PostId:id,}).populate("user","firstname ");
     return res.status(200).json({
       status: "200",
       message: "All comments are here:",
@@ -94,11 +94,73 @@ export const allcomment = async (req, res) => {
   }
 };
 
+
+// Update Comments
+export const updateComment = async (req,res)=>{
+  const { id } =req.params;
+  try{
+    const {commentMessage}= req.body;
+    const commentId = await CommentModel.findById(id);
+    if(!commentId)
+    return res.status(404).json({
+  status:"404",
+  message:"Commet id not found",
+  data:commentId,
+  })
+  const myComment= await CommentModel.findByIdAndUpdate(id,{
+ commentMessage,
+  })
+  return res.status(200).json({
+    status:"200",
+    message:"Your comment updated successful",
+    data: myComment,
+  })
+
+
+  }
+  catch (error){
+    return res.status(500).json({
+      status:"500",
+      message:"Failed to update",
+      error:error.message,
+
+    })
+  }
+
+}
+
+// Delete comments by id
+export const DeletecommentbyId = async(req,res)=>{
+  const { id }=req.params;
+  try{
+    const findId = await CommentModel.findById(id);
+    if(!findId)
+    return res.status(404).json({
+  status:"404",
+  message:"Comment id not found try again",
+  data:findId,
+  })
+  const deleteComment = await CommentModel.findByIdAndDelete(id);
+  return res.status(200).json({
+    status:"200",
+    message:"Comment deleted succesful",
+    data: deleteComment,
+  })
+  }
+  catch(error){
+    return res.status(500).json({
+      status:"500",
+      message:"Sorry failed to delete Comment",
+      error:error.message,
+
+    })
+  }
+}
 //getting allPosts
 
 export const getAllPosts = async (req, res) => {
   try {
-    const getPosts = await postModel.find().populate({path:'comments', select: 'CommentMessage user'});
+    const getPosts = await postModel.find().populate({path:'comment', select: 'user commentMessage username userPhoto'});
     return res.status(200).json({
       status: "200",
       message: "All posts re here:",
@@ -119,7 +181,7 @@ export const getAllPosts = async (req, res) => {
 export const getPostById = async (req, res) => {
   try {
     const { id } = req.params;
-    const Postid = await postModel.findById(id);
+    const Postid = await postModel.findById(id).populate({path:'comment', select:'user commentMessage username userPhoto'});
     if (!Postid) {
       return res.status(404).json({
         message: "Post Id Not Found",
@@ -151,7 +213,7 @@ export const deletePostById = async (req, res) => {
       });
     const deleteFoundid = await postModel.findByIdAndDelete(id);
     return res.status(201).json({
-      status: "201",
+      status: "200",
       message: "Post Deleted Successfully",
       data: deleteFoundid,
     });
@@ -163,7 +225,7 @@ export const deletePostById = async (req, res) => {
     });
   }
 };
-
+// Update post by Id
 export const updatePost = async (req, res) => {
   const { id } = req.params;
   try {
