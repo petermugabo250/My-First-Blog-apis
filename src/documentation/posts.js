@@ -111,7 +111,7 @@
  *           type: string
  *     requestBody:
  *       content:
- *         application/json:
+ *         multipart/form-data:
  *           schema:
  *             type: object
  *             properties:
@@ -137,29 +137,7 @@
  *         description: Comment retreived view here.
  *       500:
  *         description: Failed to retrieve comment.
- * /api/posts/comment/update/{id}:
- *   put:
- *     summary: Update your  comment.
- *     tags: [Comments]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *     requestBody:
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               commentMessage:
- *                 type: string
- *     responses:
- *       200:
- *         description: comment updated.
- *       500:
- *         description: failed to update comment.
+ * 
  * /api/posts/comment/delete/{id}:
  *   delete:
  *     summary: Delete comments.
