@@ -18,7 +18,7 @@ PostRoutes.delete("/delete/:id",Authorization, deletePostById);
 PostRoutes.put("/update/:id",Authorization,fileUpload.single("PostImage"),updatePost);
 
 // comment routes
-PostRoutes.post("/comment/send/:id", commentAuth, createComment);
+PostRoutes.post("/comment/send/:id", fileUpload.single("files"), commentAuth, createComment);
 PostRoutes.get("/comment/get/:id", commentAuth, allcomment);
 PostRoutes.put("/comment/update/:id", updateComment);
 PostRoutes.delete("/comment/delete/:id", commentAuth, DeletecommentbyId);
