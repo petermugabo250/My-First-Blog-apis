@@ -3,6 +3,7 @@ import usertable from "./userModel";
 import CommentModel from "./CommentModel";
 import {commentSchema} from"./CommentModel";
 import { Schema } from "mongoose";
+// Post-Model side
 const PostSchema = new mongoose.Schema({
   PostImage: {
     type: String,
@@ -32,7 +33,9 @@ const PostSchema = new mongoose.Schema({
   comment:[{
     type: mongoose.Schema.Types.ObjectId,
     ref:'comments',
-  }]
+  }],
+  views: { type: Number, default: 0 },
+  
 });
 
 const postModel = mongoose.model("Posts", PostSchema);

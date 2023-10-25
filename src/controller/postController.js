@@ -187,6 +187,11 @@ export const getPostById = async (req, res) => {
         message: "Post Id Not Found",
       });
     }
+
+    // Increment the view count for the post
+    Postid.views += 1; // Increment the views field by 1
+    await Postid.save(); // Save the updated post with the incremented view count
+
     return res.status(200).json({
       status: "200",
       message: "Congratrations",

@@ -10,6 +10,8 @@ import {
 import fileUpload from "../helper/multer";
 import Authorization from "../middleware/Auntantication";
 import commentAuth from "../middleware/commentAunt";
+
+
 const PostRoutes = express.Router();
 PostRoutes.post( "/create",Authorization,fileUpload.single("PostImage"),createPost);
 PostRoutes.get("/read", getAllPosts);
