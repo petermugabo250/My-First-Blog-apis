@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import { Schema } from "mongoose";
 const {ObjectId} = mongoose.Schema;
+
+// Comment Model-side
 export const commentSchema= new mongoose.Schema({
   commentMessage:{
   type:String,
